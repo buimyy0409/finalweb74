@@ -23,7 +23,7 @@ function App() {
             <Content style={{ margin: "24px 16px 0" }}>
             
               <Routes>
-              <Route path="/home" element={<HomePage />} />
+              <Route path="/" element={<HomePage />} />
 
                 <Route path="/auth" element={<AuthLayout />}>
                   <Route path="/auth/login" element={<Login />} />
@@ -33,7 +33,7 @@ function App() {
                 <Route path="/" element={<RootLayout />}>
                   <Route path="/projects" element={<Projects />} />
                       <Route
-                        path="/workspace/:projectId"
+                        path="/projects/:projectId"
                         element={<Project />}
                       /> 
                 </Route>
