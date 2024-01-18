@@ -1,24 +1,25 @@
-require('dotenv').config();
-
 const express = require('express');
-
-const mongoose = require('mongoose');
-
 const cors = require('cors');
 
 const app = express();
-const connectDB = require('./configs/db.cfg')
 
 app.use(cors());
 
-const PORT = process.env.PORT;
+require('dotenv').config({
+  path: './.env'
+});
+require('./configs/db.cfg');
 
-const MONGODB_URI = process.env.MONGODB_URI;
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 
+const PORT = process.env.PORT || 3000;
 
-connectDB()
-
+app.use('/list', require('./routes/list'));
+app.use('/add', require('./routes/home'));
+app.use('/edit', require('./routes/edit'));
+app.use('/delete', require('./routes/delete'));
 
 app.listen(PORT, () => {
-    console.log(`Server is listening on PORT ${PORT}`);
+  console.log(`Listening on ${PORT}`);
 });
