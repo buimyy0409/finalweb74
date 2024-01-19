@@ -1,5 +1,5 @@
 {
-  "name": "mern-task-manager-backend",
+  "name": "task-management-backend",
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
@@ -10,9 +10,9 @@
     "Task manager",
     "Tasks"
   ],
-  "author": "Aayush",
+  "author": "myy",
   "license": "ISC",
-  "description": "The backend part of simple task manager with user authentication",
+  "description": "",
   "dependencies": {
     "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
