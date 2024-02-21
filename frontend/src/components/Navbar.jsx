@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { logout } from '../redux/actions/authActions';
 
 const Navbar = () => {
@@ -14,14 +14,15 @@ const Navbar = () => {
 
   const handleLogoutClick = () => {
     dispatch(logout());
+    Navigate('/signup');
   }
 
   return (
     <>
       <header className='flex justify-between sticky top-0 p-4 bg-white shadow-sm items-center'>
-        <h2 className='cursor-pointer uppercase font-medium'>
+        <h1 className='cursor-pointer uppercase font-medium'>
           <Link to="/"> Task Management </Link>
-        </h2>
+        </h1>
         <ul className='hidden md:flex gap-4 uppercase font-medium'>
           {authState.isLoggedIn ? (
             <>
