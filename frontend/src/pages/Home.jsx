@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import Tasks from '../components/Tasks';
+import Tasks from '../components/listTasks';
 import MainLayout from '../layouts/MainLayout';
 
 const Home = () => {

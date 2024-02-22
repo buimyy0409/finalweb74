@@ -18,8 +18,9 @@ const Task = () => {
   const [task, setTask] = useState(null);
   const [formData, setFormData] = useState({
     description: '',
-    deadline: null,
+    deadline: '',
   });
+
   const [formErrors, setFormErrors] = useState({});
 
   useEffect(() => {
@@ -129,8 +130,8 @@ const Task = () => {
                   id="deadline"
                   name="deadline"
                   value={formData.deadline}
-                  onChange={handleDeadlineChange}
                   placeholder="Select a deadline"
+                  onChange={(e) => handleDeadlineChange('deadline', e.target.value)}
                 />
                 {fieldError('deadline')}
               </div>
