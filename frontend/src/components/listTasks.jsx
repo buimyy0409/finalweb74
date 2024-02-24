@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import useFetch from '../hooks/useFetch';
 import Loader from './utils/Loader';
 import Tooltip from './utils/Tooltip';
-
+import dayjs from 'dayjs';
 const Tasks = () => {
   const authState = useSelector((state) => state.authReducer);
   const [tasks, setTasks] = useState([]);
@@ -15,6 +15,9 @@ const Tasks = () => {
     fetchData(config, { showSuccessToast: false }).then((data) => setTasks(data.tasks));
   }, [authState.token, fetchData]);
 
+  const formatDate = (date) => {
+    return dayjs(date).format('DD/MM/YYYY');
+  };
   useEffect(() => {
     if (!authState.isLoggedIn) return;
     fetchTasks();
@@ -57,7 +60,7 @@ const Tasks = () => {
                     </Tooltip>
                   </div>
                   <div className="whitespace-pre">{task.description}</div>
-                  <div className="text-sm text-gray-500 mt-1">Deadline: {task.deadline}</div>
+                  <div className="text-sm text-gray-500 mt-1">Deadline: {formatDate(task.deadline)}</div>
                 </div>
               ))
             )}

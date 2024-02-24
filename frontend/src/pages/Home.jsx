@@ -28,8 +28,7 @@ const Home = () => {
           </div>
         ) : (
           <>
-            <h1 className='text-lg mt-8 mx-8 border-b border-b-gray-300'>Welcome {authState.user.name}</h1>
-            <Tasks />
+<h1 className='mt-8 mx-auto border-b border-gray-300 text-center' style={{ fontSize: '32px' }}>Welcome {authState.user.name}</h1>            <Tasks />
           </>
         )}
       </MainLayout>
