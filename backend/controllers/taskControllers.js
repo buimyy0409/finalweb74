@@ -33,11 +33,15 @@ exports.getTask = async (req, res) => {
 
 exports.postTask = async (req, res) => {
   try {
-    const { description } = req.body;
+    const { description, deadline } = req.body;
     if (!description) {
       return res.status(400).json({ status: false, msg: "Description of task not found" });
     }
-    const task = await Task.create({ user: req.user.id, description });
+    if (!deadline){
+      return res.status(400).json({ status: false, msg: "Please select a deadline" })
+    }
+    console.log("deadline",deadline);
+    const task = await Task.create({ user: "65d5f9f533aa4fcecb7f5edb", description, deadline });
     res.status(200).json({ task, status: true, msg: "Task created successfully.." });
   }
   catch (err) {
@@ -48,9 +52,12 @@ exports.postTask = async (req, res) => {
 
 exports.putTask = async (req, res) => {
   try {
-    const { description } = req.body;
+    const { description, deadline } = req.body;
     if (!description) {
       return res.status(400).json({ status: false, msg: "Description of task not found" });
+    }
+    if (!deadline){
+      return res.status(400).json({ status: false, msg: "Please select a deadline" })
     }
 
     if (!validateObjectId(req.params.taskId)) {
@@ -66,7 +73,7 @@ exports.putTask = async (req, res) => {
       return res.status(403).json({ status: false, msg: "You can't update task of another user" });
     }
 
-    task = await Task.findByIdAndUpdate(req.params.taskId, { description }, { new: true });
+    task = await Task.findByIdAndUpdate(req.params.taskId, { description, deadline }, { new: true });
     res.status(200).json({ task, status: true, msg: "Task updated successfully.." });
   }
   catch (err) {

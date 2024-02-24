@@ -48,8 +48,8 @@ const Task = () => {
     });
   };
 
-  const handleDeadlineChange = (date) => {
-    handleChange('deadline', date);
+  const handleDeadlineChange = (deadline, dateString) => {
+    handleChange(deadline, dateString.toString());
   };
 
   const handleReset = (e) => {
@@ -64,7 +64,6 @@ const Task = () => {
     e.preventDefault();
     const errors = validateManyFields('task', formData);
     setFormErrors({});
-
     if (errors.length > 0) {
       setFormErrors(
         errors.reduce((total, ob) => ({ ...total, [ob.field]: ob.err }), {})
@@ -129,9 +128,8 @@ const Task = () => {
                 <DatePicker
                   id="deadline"
                   name="deadline"
-                  value={formData.deadline}
                   placeholder="Select a deadline"
-                  onChange={(e) => handleDeadlineChange('deadline', e.target.value)}
+                  onChange={(id, dateString) => handleDeadlineChange('deadline', dateString)}
                 />
                 {fieldError('deadline')}
               </div>

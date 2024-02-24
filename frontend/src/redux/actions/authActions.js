@@ -44,8 +44,9 @@ export const saveProfile = (token) => async (dispatch) => {
   }
 };
 
+
 export const logout = () => (dispatch) => {
   localStorage.removeItem("token");
   dispatch({ type: LOGOUT });
-  window.location.href = "/";
+  window.location.href = "/login";
 };
