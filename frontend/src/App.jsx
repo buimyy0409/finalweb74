@@ -8,6 +8,7 @@ import Signup from "./pages/Signup";
 import { saveProfile } from "./redux/actions/authActions";
 import NotFound from "./pages/NotFound";
 
+
 function App() {
   const authState = useSelector((state) => state.authReducer);
   const dispatch = useDispatch();
@@ -22,7 +23,7 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route key= "/" path="/" element={<Home />} />
           <Route
             path="/signup"
             element={authState.isLoggedIn ? <Navigate to="/" /> : <Signup />}

@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, Navigate } from 'react-router-dom';
 import { logout } from '../redux/actions/authActions';
+import { LOGOUT } from '../redux/actions/actionTypes';
 
 const Navbar = () => {
 
@@ -13,8 +14,9 @@ const Navbar = () => {
   }
 
   const handleLogoutClick = () => {
-    dispatch(logout());
-    Navigate('/signup');
+    localStorage.removeItem("token");
+    dispatch({ type: LOGOUT });
+    window.location.assign('/');
   }
 
   return (
